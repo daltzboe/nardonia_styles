@@ -40,8 +40,7 @@ export default function Home() {
       <div className="announcement">A LITTLE LUXURY, A LOT OF CONFIDENCE <span>✦</span> NOW ACCEPTING APPOINTMENT REQUESTS</div>
       <header className="site-header">
         <a href="#home" className="brand" aria-label="Nardonia Styles home">
-          <span className="brand-mark"><span className="brand-initials">NA</span><span className="brand-word">nardonia</span></span>
-          <span className="brand-sub">STYLES</span>
+          <span className="brand-name">nardonia <span>styles</span></span>
         </a>
         <nav className={menuOpen ? "nav-links open" : "nav-links"}>
           <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
@@ -127,7 +126,7 @@ export default function Home() {
       <section className="closing-cta"><span className="closing-spark">✳</span><div className="section-kicker">A LITTLE SELF-LOVE LOOKS GOOD ON YOU</div><h2>Ready to feel <em>that girl?</em></h2><button className="button button-dark" onClick={() => goToBooking()}>Let’s book your look <ArrowUpRight size={17} /></button></section>
 
       <footer className="footer">
-        <div className="footer-main"><a href="#home" className="brand footer-brand"><span className="brand-mark"><span className="brand-initials">NA</span><span className="brand-word">nardonia</span></span><span className="brand-sub">STYLES</span></a><p>Beauty in every detail.<br />Confidence in every style.</p><a className="social-link" href="https://www.instagram.com/nardonia_styles/" target="_blank" rel="noreferrer"><Instagram size={17} /> @NARDONIA_STYLES <ArrowUpRight size={14} /></a></div>
+        <div className="footer-main"><a href="#home" className="brand footer-brand"><span className="brand-name">nardonia <span>styles</span></span></a><p>Beauty in every detail.<br />Confidence in every style.</p><a className="social-link" href="https://www.instagram.com/nardonia_styles/" target="_blank" rel="noreferrer"><Instagram size={17} /> @NARDONIA_STYLES <ArrowUpRight size={14} /></a></div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} NARDONIA STYLES. ALL RIGHTS RESERVED.</span><span>MADE WITH LOVE <i>✳</i></span><a href="#home">BACK TO TOP ↑</a></div>
       </footer>
     </main>
