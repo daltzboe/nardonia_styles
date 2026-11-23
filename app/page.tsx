@@ -4,11 +4,13 @@ import { useState } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronDown, Clock3, Instagram, Menu, X, Sparkles, CalendarDays, Heart } from "lucide-react";
 
 const services = [
-  { name: "Knotless Braids", detail: "Lightweight, seamless braids made to protect and turn heads.", time: "4–6 hrs", price: "From $180" },
-  { name: "Boho Braids", detail: "Soft curls woven into beautiful, effortless braided styles.", time: "5–7 hrs", price: "From $220" },
-  { name: "Sew-In / Install", detail: "A flawless blend with a natural-looking finish and movement.", time: "2–3 hrs", price: "From $150" },
-  { name: "Ponytails & Updos", detail: "Sleek, sculpted looks for your next special moment.", time: "1–2 hrs", price: "From $85" }
+  { category: "French Curls", items: [{ name: "Bob", price: "$190" }, { name: "Mid-back", price: "$240" }, { name: "Waist Length", price: "$270" }, { name: "Butt Length", price: "$300" }] },
+  { category: "Knotless Braids", items: [{ name: "Bob", price: "$180" }, { name: "Mid-back", price: "$220" }, { name: "Waist Length", price: "$250" }, { name: "Boho Add-On", price: "+$20" }] },
+  { category: "Fulani Quick Weaves", items: [{ name: "Full Style", price: "$120" }] },
+  { category: "Island Twists", items: [{ name: "Bob", price: "$170" }, { name: "Mid-back", price: "$190" }, { name: "Waist Length", price: "$200" }, { name: "Boho Add-On", price: "+$20" }] },
+  { category: "Men's Cornrows", items: [{ name: "Loc Retwist", price: "$50" }, { name: "Alicia Keys", price: "$120" }, { name: "Miracle Knots", price: "$120" }, { name: "Pinterest Inspo", price: "DM for inquiry" }] }
 ];
+const bookingOptions = services.flatMap((group) => group.items.map((item) => `${group.category} — ${item.name}`));
 
 const gallery = [
   { src: "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=900&q=85", alt: "Elegant long braided hairstyle", tag: "BRAIDS" },
@@ -19,7 +21,7 @@ const gallery = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState("Knotless Braids");
+  const [selectedService, setSelectedService] = useState("Knotless Braids — Bob");
   const [submitted, setSubmitted] = useState(false);
 
   const goToBooking = (service?: string) => {
@@ -104,7 +106,7 @@ export default function Home() {
             <div className="form-heading"><span>APPOINTMENT REQUEST</span><span>LET’S MAKE MAGIC ✳</span></div>
             <label>Your name<input required name="name" placeholder="First and last name" /></label>
             <div className="form-two"><label>Email address<input required type="email" name="email" placeholder="you@example.com" /></label><label>Phone number<input required type="tel" name="phone" placeholder="(000) 000-0000" /></label></div>
-            <label>What style are you dreaming of?<span className="select-wrap"><select value={selectedService} onChange={(e) => setSelectedService(e.target.value)}>{services.map((s) => <option key={s.name}>{s.name}</option>)}<option>Other / Custom Style</option></select><ChevronDown size={16} /></span></label>
+            <label>What style are you dreaming of?<span className="select-wrap"><select value={selectedService} onChange={(e) => setSelectedService(e.target.value)}>{bookingOptions.map((option) => <option key={option}>{option}</option>)}<option>Other / Custom Style</option></select><ChevronDown size={16} /></span></label>
             <div className="form-two"><label>Preferred date<input required type="date" name="date" min={new Date().toISOString().split("T")[0]} /></label><label>Preferred time<select name="time" defaultValue=""><option value="" disabled>Select a time</option><option>Morning (9 AM – 12 PM)</option><option>Afternoon (12 PM – 4 PM)</option><option>Evening (4 PM – 7 PM)</option></select></label></div>
             <label>Anything else we should know?<textarea name="notes" rows={3} placeholder="Hair length, inspiration, questions..." /></label>
             <button className="button button-gold form-submit" type="submit">Request my appointment <ArrowUpRight size={17} /></button>
@@ -125,7 +127,7 @@ export default function Home() {
       <section className="closing-cta"><span className="closing-spark">✳</span><div className="section-kicker">A LITTLE SELF-LOVE LOOKS GOOD ON YOU</div><h2>Ready to feel <em>that girl?</em></h2><button className="button button-dark" onClick={() => goToBooking()}>Let’s book your look <ArrowUpRight size={17} /></button></section>
 
       <footer className="footer">
-        <div className="footer-main"><a href="#home" className="brand footer-brand"><span className="brand-name">nardonia<span>.</span></span><span className="brand-sub">STYLES & BEAUTY</span></a><p>Beauty in every detail.<br />Confidence in every style.</p><a className="social-link" href="https://instagram.com/" target="_blank" rel="noreferrer"><Instagram size={17} /> FOLLOW THE BEAUTY <ArrowUpRight size={14} /></a></div>
+        <div className="footer-main"><a href="#home" className="brand footer-brand"><span className="brand-mark"><span className="brand-initials">NA</span><span className="brand-word">nardonia</span></span><span className="brand-sub">STYLES</span></a><p>Beauty in every detail.<br />Confidence in every style.</p><a className="social-link" href="https://www.instagram.com/nardonia_styles/" target="_blank" rel="noreferrer"><Instagram size={17} /> @NARDONIA_STYLES <ArrowUpRight size={14} /></a></div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} NARDONIA STYLES. ALL RIGHTS RESERVED.</span><span>MADE WITH LOVE <i>✳</i></span><a href="#home">BACK TO TOP ↑</a></div>
       </footer>
     </main>
