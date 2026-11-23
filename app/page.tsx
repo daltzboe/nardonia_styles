@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronDown, Clock3, Instagram, Menu, X, Sparkles, CalendarDays, Heart } from "lucide-react";
 
 const services = [
@@ -23,6 +24,8 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("Knotless Braids — Bob");
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [formError, setFormError] = useState("");
 
   const goToBooking = (service?: string) => {
     if (service) setSelectedService(service);
@@ -30,9 +33,42 @@ export default function Home() {
     document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setFormError("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const templateParams = {
+      customer_name: String(formData.get("name") ?? ""),
+      customer_email: String(formData.get("email") ?? ""),
+      customer_phone: String(formData.get("phone") ?? ""),
+      requested_style: String(formData.get("service") ?? selectedService),
+      preferred_date: String(formData.get("date") ?? ""),
+      preferred_time: String(formData.get("time") ?? ""),
+      notes: String(formData.get("notes") ?? ""),
+      to_email: "nardonia6@gmail.com",
+    };
+
+    try {
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("Appointment email is not configured yet. Please try again later or contact the stylist directly.");
+      }
+
+      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
+      setSubmitted(true);
+      form.reset();
+    } catch (error) {
+      console.error("Appointment email failed:", error);
+      setFormError(error instanceof Error ? error.message : "We couldn't send your request. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -105,11 +141,11 @@ export default function Home() {
             <div className="form-heading"><span>APPOINTMENT REQUEST</span><span>LET’S MAKE MAGIC ✳</span></div>
             <label>Your name<input required name="name" placeholder="First and last name" /></label>
             <div className="form-two"><label>Email address<input required type="email" name="email" placeholder="you@example.com" /></label><label>Phone number<input required type="tel" name="phone" placeholder="(000) 000-0000" /></label></div>
-            <label>What style are you dreaming of?<span className="select-wrap"><select value={selectedService} onChange={(e) => setSelectedService(e.target.value)}>{bookingOptions.map((option) => <option key={option}>{option}</option>)}<option>Other / Custom Style</option></select><ChevronDown size={16} /></span></label>
+            <label>What style are you dreaming of?<span className="select-wrap"><select name="service" value={selectedService} onChange={(e) => setSelectedService(e.target.value)}>{bookingOptions.map((option) => <option key={option}>{option}</option>)}<option>Other / Custom Style</option></select><ChevronDown size={16} /></span></label>
             <div className="form-two"><label>Preferred date<input required type="date" name="date" min={new Date().toISOString().split("T")[0]} /></label><label>Preferred time<select name="time" defaultValue=""><option value="" disabled>Select a time</option><option>Morning (9 AM – 12 PM)</option><option>Afternoon (12 PM – 4 PM)</option><option>Evening (4 PM – 7 PM)</option></select></label></div>
             <label>Anything else we should know?<textarea name="notes" rows={3} placeholder="Hair length, inspiration, questions..." /></label>
-            <button className="button button-gold form-submit" type="submit">Request my appointment <ArrowUpRight size={17} /></button>
-            <p className="form-footnote">Submitting a request does not confirm an appointment. We’ll confirm availability and details with you.</p>
+            {formError && <p className="form-footnote" role="alert">{formError}</p>}<button className="button button-gold form-submit" type="submit" disabled={sending}>{sending ? "Sending request..." : "Request my appointment"} <ArrowUpRight size={17} /></button>
+            <p className="form-footnote">Your request will be emailed to Nancy. Submitting does not confirm an appointment; she’ll contact you to confirm availability.</p>
           </form>}
         </div>
       </section>
