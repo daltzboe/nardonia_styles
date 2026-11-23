@@ -88,8 +88,8 @@ export default function Home() {
 
       <section className="services-section section-pad" id="services">
         <div className="section-top"><div><div className="section-kicker">02 / THE MENU</div><h2>Made for <em>your moment.</em></h2></div><p>Thoughtfully crafted styles. Beautiful finishes.<br />A little something for every version of you.</p></div>
-        <div className="service-list">{services.map((service, i) => <article className="service-row" key={service.name}><span className="service-number">0{i + 1}</span><div className="service-info"><h3>{service.name}</h3><p>{service.detail}</p></div><div className="service-meta"><span>{service.time}</span><b>{service.price}</b></div><button className="circle-arrow" aria-label={"Book " + service.name} onClick={() => goToBooking(service.name)}><ArrowUpRight size={19} /></button></article>)}</div>
-        <p className="service-disclaimer">Prices are starting estimates. Final pricing may vary by length, density, and desired style.</p>
+        <div className="service-list">{services.map((group, i) => <article className="service-category" key={group.category}><div className="service-category-heading"><span className="service-number">0{i + 1}</span><h3>{group.category}</h3></div><div className="service-options">{group.items.map((item) => <div className="service-option" key={item.name}><span>{item.name}</span><b>{item.price}</b></div>)}</div><button className="circle-arrow" aria-label={"Book " + group.category} onClick={() => goToBooking(group.category + " — " + group.items[0].name)}><ArrowUpRight size={19} /></button></article>)}</div>
+        <p className="service-disclaimer">Pinterest-inspired styles are available by inquiry. Please DM for details.</p>
       </section>
 
       <section className="gallery-section section-pad" id="gallery">
