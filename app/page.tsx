@@ -82,7 +82,7 @@ export default function Home() {
           <h2>More than a style.<br /><em>It’s a feeling.</em></h2>
           <div className="intro-text"><p>At Nardonia Styles, beauty is personal. It’s in the little details, the thoughtful touch, and the confidence you carry when you walk out the door.</p><p>From everyday elegance to your next show-stopping look, every appointment is a moment to pour a little more into you.</p><a href="#booking" className="underlined-link" onClick={(e) => { e.preventDefault(); goToBooking(); }}>Let’s create your look <ArrowUpRight size={15} /></a></div>
         </div>
-        <div className="intro-signature">With love, <span>Nardonia</span></div>
+        <div className="intro-signature">With love, <span>Nancy Ardonia</span></div>
       </section>
 
       <section className="services-section section-pad" id="services">
@@ -117,8 +117,8 @@ export default function Home() {
       <section className="payment-section section-pad" id="payments">
         <div className="payment-copy"><div className="section-kicker">05 / THE LITTLE DETAILS</div><h2>Easy ways<br />to <em>pay beautifully.</em></h2><p>We keep payment simple. Once your appointment is confirmed, you can send your deposit or payment directly through your preferred app.</p></div>
         <div className="payment-options">
-          <div className="payment-card"><span className="payment-mark">Z</span><div><small>PAY WITH</small><h3>Zelle</h3><p>Send securely using the stylist’s Zelle details.</p><span className="payment-placeholder">Zelle details coming soon</span></div></div>
-          <div className="payment-card"><span className="payment-mark cash">$</span><div><small>PAY WITH</small><h3>Cash App</h3><p>Quick and easy payments through Cash App.</p><span className="payment-placeholder">Cash App $cashtag coming soon</span></div></div>
+          <div className="payment-card"><span className="payment-mark">Z</span><div><small>PAY WITH</small><h3>Zelle</h3><p>Send securely using the stylist’s Zelle details.</p><span className="payment-placeholder">916 883 8438</span></div></div>
+          <div className="payment-card"><span className="payment-mark cash">$</span><div><small>PAY WITH</small><h3>Cash App</h3><p>Quick and easy payments through Cash App.</p><span className="payment-placeholder">$ardonancyy</span></div></div>
           <p className="payment-note"><Sparkles size={15} /> Payment details will be shared here once provided. No card payments are collected on this website.</p>
         </div>
       </section>
@@ -126,7 +126,7 @@ export default function Home() {
       <section className="closing-cta"><span className="closing-spark">✳</span><div className="section-kicker">A LITTLE SELF-LOVE LOOKS GOOD ON YOU</div><h2>Ready to feel <em>that girl?</em></h2><button className="button button-dark" onClick={() => goToBooking()}>Let’s book your look <ArrowUpRight size={17} /></button></section>
 
       <footer className="footer">
-        <div className="footer-main"><a href="#home" className="brand footer-brand"><span className="brand-name">nardonia <span>styles</span></span></a><p>Beauty in every detail.<br />Confidence in every style.</p><a className="social-link" href="https://www.instagram.com/nardonia_styles/" target="_blank" rel="noreferrer"><Instagram size={17} /> @NARDONIA_STYLES <ArrowUpRight size={14} /></a></div>
+        <div className="footer-main"><a href="#home" className="brand footer-brand"><span className="brand-name">nardonia <span>styles</span></span></a><p>Beauty in every detail.<br />Confidence in every style.</p><a className="social-link" href="mailto:nardonia6@gmail.com"><span>✉</span> NARDONIA6@GMAIL.COM <ArrowUpRight size={14} /></a><a className="social-link" href="https://www.instagram.com/nardonia_styles/" target="_blank" rel="noreferrer"><Instagram size={17} /> @NARDONIA_STYLES <ArrowUpRight size={14} /></a></div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} NARDONIA STYLES. ALL RIGHTS RESERVED.</span><span>MADE WITH LOVE <i>✳</i></span><a href="#home">BACK TO TOP ↑</a></div>
       </footer>
     </main>
