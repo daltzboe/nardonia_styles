@@ -40,8 +40,8 @@ export default function Home() {
       <div className="announcement">A LITTLE LUXURY, A LOT OF CONFIDENCE <span>✦</span> NOW ACCEPTING APPOINTMENT REQUESTS</div>
       <header className="site-header">
         <a href="#home" className="brand" aria-label="Nardonia Styles home">
-          <span className="brand-name">nardonia<span>.</span></span>
-          <span className="brand-sub">STYLES & BEAUTY</span>
+          <span className="brand-mark"><span className="brand-initials">NA</span><span className="brand-word">nardonia</span></span>
+          <span className="brand-sub">STYLES</span>
         </a>
         <nav className={menuOpen ? "nav-links open" : "nav-links"}>
           <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
