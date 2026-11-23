@@ -117,9 +117,9 @@ export default function Home() {
       <section className="payment-section section-pad" id="payments">
         <div className="payment-copy"><div className="section-kicker">05 / THE LITTLE DETAILS</div><h2>Easy ways<br />to <em>pay beautifully.</em></h2><p>We keep payment simple. Once your appointment is confirmed, you can send your deposit or payment directly through your preferred app.</p></div>
         <div className="payment-options">
-          <div className="payment-card"><span className="payment-mark">Z</span><div><small>PAY WITH</small><h3>Zelle</h3><p>Send securely using the stylist’s Zelle details.</p><span className="payment-placeholder">916 883 8438</span></div></div>
-          <div className="payment-card"><span className="payment-mark cash">$</span><div><small>PAY WITH</small><h3>Cash App</h3><p>Quick and easy payments through Cash App.</p><span className="payment-placeholder">$ardonancyy</span></div></div>
-          <p className="payment-note"><Sparkles size={15} /> Payment details will be shared here once provided. No card payments are collected on this website.</p>
+          <div className="payment-card"><span className="payment-mark">Z</span><div><small>PAY WITH</small><h3>Zelle</h3><p>Send securely using the stylist’s Zelle details.</p><a className="payment-placeholder" href="tel:+19168838438">916 883 8438 <ArrowUpRight size={13} /></a></div></div>
+          <div className="payment-card"><span className="payment-mark cash">$</span><div><small>PAY WITH</small><h3>Cash App</h3><p>Quick and easy payments through Cash App.</p><a className="payment-placeholder" href="https://cash.app/$ardonancyy" target="_blank" rel="noreferrer">$ardonancyy <ArrowUpRight size={13} /></a></div></div>
+          <p className="payment-note"><Sparkles size={15} /> Tap Cash App to open the payment profile, or tap the Zelle number to contact the stylist. No card payments are collected on this website.</p>
         </div>
       </section>
 
