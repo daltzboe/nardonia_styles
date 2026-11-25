@@ -14,8 +14,8 @@ const services = [
 const bookingOptions = services.flatMap((group) => group.items.map((item) => `${group.category} — ${item.name}`));
 
 const gallery = [
-  { src: "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=900&q=85", alt: "Elegant long braided hairstyle", tag: "BRAIDS" },
-  { src: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=900&q=85", alt: "Beautiful salon hairstyle detail", tag: "SIGNATURE LOOK" },
+  { src: "/images/portfolio/curly-braids.jpg", alt: "Braided hairstyle with curly ends", tag: "CURLY BRAIDS" },
+  { src: "/images/portfolio/knotless-braids.jpg", alt: "Long knotless braids with clean parting", tag: "KNOTLESS BRAIDS" },
   { src: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=85", alt: "Glamorous beauty editorial look", tag: "GLAM" },
   { src: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=85", alt: "Hair styling in the salon", tag: "THE PROCESS" }
 ];
